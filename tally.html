@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account & Finance</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        /* Header Styling */
+        .header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-align: left;
+            border-bottom: 2px solid #333;
+        }
+
+        .header.dark-mode {
+            background-color: #333;
+            border-bottom: 2px solid #ffdf28;
+        }
+
+
+        .header img {
+            height: 100px;
+            width: 150px;
+        }
+        
+        /* header navbar styling*/
+        .header .nav-items {
+            display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    transition: transform 0.5s ease;
+        }
+        .header .nav-items .dropdown-content {
+            display: block; /* Keep display block for visibility */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #21ffd3d0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(-10px);  /* Slight upward position */
+    transition: opacity 0.3s ease, transform 0.3s ease;  /* Smooth animation */
+    pointer-events: none; /* Prevent clicking when hidden */
+    transition-delay: 0.1s; /* Adds a slight delay */
+}
+
+
+        .header .nav-items a {
+            color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+            
+        }
+
+        .header.dark-mode .nav-items a {
+            color: #ffffff;
+        }
+        .header .nav-items a:hover{
+            color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+        }
+        .header.dark-mode .nav-items a:hover{
+            color:#ffee00;
+           
+        }
+
+        /* Dropdown Menu Styling */
+        .header .nav-items .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+    
+
+        .header.dark-mode .dropdown-content {
+            background-color: #363636;
+        }
+
+       /* Add hover effect on dropdown links */
+.header .nav-items .dropdown-content a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: #21ffd3d0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+        .header.dark-mode .dropdown-content a {
+    color: #ffffff;
+    background-color: #363636;
+}
+
+
+.header .nav-items .dropdown-content a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    
+   
+}
+
+        .header.dark-mode .dropdown-content a:hover {
+            background-color: #444444;
+            color: #ffee00; /* Bright color contrast in dark mode */
+}
+
+       
+.header .nav-items .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    animation: bounceIn 0.5s ease; /* New animation */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .header .nav-items {
+        display: none;
+    }
+
+    .header.active .nav-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+
+      /*header nav bar end*/
+
+      
+  /* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 15px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #000000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar.dark-mode {
+    background-color: #333;
+    border-bottom: 2px solid #ffdf28;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row; /* Ensure horizontal alignment */
+    gap: 15px; /* Adjust gap for spacing */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: #000000;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transform: scale(1.1);
+    opacity: 1;
+   
+}
+
+.navbar.dark-mode ul li a {
+    color: #e0e0e0;
+}
+
+.navbar.dark-mode ul li a:hover {
+    color: #ffee00; /* Bright hover effect in dark mode */
+    background-color: transparent;
+}
+
+/* Navbar Dropdown Menu Styling */
+.navbar ul li .dropdown {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
+    position: absolute;
+    top: 100%; /* Dropdown below parent */
+    left: 0;
+    background-color: #21ffd3d0;
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-10px); /* Off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    pointer-events: none; /* Prevent clicks */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.navbar.dark-mode .dropdown {
+    background-color: #363636;/* Darker background for dark mode */
+}
+
+.navbar ul li:hover .dropdown {
+    visibility: visible; /* Show dropdown on hover */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Reset position */
+    pointer-events: auto; /* Enable interaction */
+    animation: bounceIn 0.5s ease; /* Add bounce animation */
+}
+
+.navbar ul li .dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: #000000;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar.dark-mode .dropdown a {
+    color: #e0e0e0; /* Light text in dark mode */
+}
+
+.navbar ul li .dropdown a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hover effect */
+    color: #3011f6;
+    background-color: transparent;
+}
+
+.navbar.dark-mode .dropdown a:hover {
+    background-color: #444444;
+            color: #ffee00; /* Bright color contrast in dark mode */
+}
+
+/* Bounce animation for dropdown */
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        width: 100%; /* Full-width items on mobile */
+    }
+
+    .navbar ul li a {
+        text-align: center; /* Center text */
+        padding: 15px;
+    }
+
+    .navbar ul li .dropdown {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none; /* Reset position */
+        box-shadow: none; /* Simplify for mobile */
+        width: 100%; /* Full-width on mobile */
+    }
+}
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .nav-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .images img {
+        width: 100%; /* Ensures images scale properly */
+    }
+    #contactForm {
+        width: 100%; /* Full width on small screens */
+    }
+}
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 7px;
+            right: 5px;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 2px;
+            z-index: 100;
+        }
+
+        .dark-mode-toggle img {
+            width: 50px;
+            height: 60px;
+        }
+         /* New Layout Styling */
+         .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .info {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .images img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* General form styles */
+/* General form styles */
+#contactForm {
+  width: 350px; /* Adjusted form size */
+  padding: 20px;
+  justify-items: center;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contactForm label {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+#contactForm input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#contactForm button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effects */
+#contactForm input:focus {
+  border-color: #007bff;
+}
+
+#contactForm button:hover {
+  background-color: #0056b3;
+}
+
+/* Dark mode styles */
+body.dark-mode #contactForm {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode #contactForm label {
+  color: #ccc;
+}
+
+body.dark-mode #contactForm input {
+  background-color: #3c3c3c;
+  border-color: #666;
+  color: #fff;
+}
+
+body.dark-mode #contactForm input:focus {
+  border-color: #66b3ff;
+}
+
+body.dark-mode #contactForm button {
+  background-color: #0056b3;
+}
+
+body.dark-mode #contactForm button:hover {
+  background-color: #003d80;
+}
+       
+    </style>
+</head>
+
+<body>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+       
+        <img src="6714975.png" alt="Toggle Dark Mode">
+      
+        
+    </button>
+   <!-- Header Section -->
+<header class="header">
+   <center><p class="headtext"><h3> THE GEORGE TELEGRAPH TRAINING INSTITUTE BAGNAN</h3></p></center>
+    <img src="george-telegraph-logo.png" alt="Logo" class="logo">
+  
+    <div class="nav-items">
+      
+        <div class="dropdown">
+            <a href="">About</a>
+            <div class="dropdown-content">
+                <a href="team.html">Team</a>
+                <a href="history.html">History</a>
+                <a href="events.html">Events</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="">Contact</a>
+            <div class="dropdown-content">
+                <a href="Adress.html">Contact Details</a>
+                <a href="Adress.html">Address</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="others.html">Others</a>
+          
+        </div>
+    </div>
+   
+</header>
+
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Courses</a>
+                <ul class="dropdown">
+                    <li><a href="param.html">Paramedical Department</a></li>
+                    <li><a href="csoftware.html">Computer Software</a></li>
+                    <li><a href="chard.html">Comuter Hardware</a></li>
+                    <li><a href="mobile.html">Moblie Repairing</a></li>
+                    <li><a href="acf.html">AC & Fridge Repairing</a></li>
+                    <li><a href="talk.html">Communication </a></li>
+                    <li><a href="tally.html">Accounts & Finance</a></li>
+                    <li><a href="electric.html">Electronics</a></li>
+                    <li><a href="atm.html">Automobile Department</a></li>
+                </ul>
+            </li>
+            <li><a href="">Addmission</a>
+                <ul class="dropdown">
+                    <li><a href="rules.html">Rules & regulation</a></li>
+                    <li><a href="elig.html">Eligebility</a></li>
+                </ul>
+            </li>
+            <li><a href="placements.html">Placements</a></li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+ <main class="container">
+    <!-- Information Section -->
+    <div class="info">
+        <h3>Accounts and Taxation Department</h3>
+        <p>
+            The George Telegraph Training Institute, a renowned educational institution in Kolkata, offers a leading Diploma in Financial Accounting program. This diploma course specializes in equipping students with essential skills and knowledge in the field of accounting and finance.
+        </p>
+        
+        <h4>Program Overview</h4>
+        <p>
+            The Financial Accounting Course at The George Telegraph Training Institute is designed to provide comprehensive training in accounting principles, financial statements, taxation, auditing, and other vital aspects of finance. Students enrolled in this program gain expertise in managing financial records, analyzing financial data, and understanding regulatory frameworks.
+        </p>
+        <p>
+            This diploma course caters to individuals aspiring for a successful career in finance and accounting. It offers a well-structured curriculum combining theoretical concepts with practical training, ensuring hands-on experience. The institute also provides accounting certification courses to enhance employability and help students stand out in the competitive job market.
+        </p>
+        <p>
+            Additionally, the institute offers an advanced Excel certification course, which complements financial accounting training by imparting proficiency in spreadsheets and data analysis tools. This comprehensive learning experience prepares individuals for rewarding careers in finance and accounting.
+        </p>
+        
+        <h4>What is Finance?</h4>
+        <p>
+            Finance revolves around the management of money, investments, and financial resources. Aspiring finance students can gain knowledge in financial analysis, budgeting, investment planning, risk management, and decision-making. The George Telegraph Training Institute offers excellent finance and accounting courses, preparing students for successful careers in this dynamic field.
+        </p>
+        
+        <h4>What is Accounting?</h4>
+        <p>
+            Accounting involves the systematic recording, analysis, and interpretation of financial transactions. Students learn financial management, budget handling, and financial data analysis. The institute offers certification courses like Tally Prime with GST, providing students with practical experience and industry-recognized credentials.
+        </p>
+        
+        <h4>What is Taxation?</h4>
+        <p>
+            Taxation focuses on imposing and collecting taxes. The institute provides courses that cover tax laws, planning, and compliance. Students gain expertise in handling tax-related responsibilities, making them valuable assets in the accounting and finance industry.
+        </p>
+        
+        <h4>Eligibility</h4>
+        <p>Appeared Class XII Board Exam</p>
+        
+        <h4>Duration</h4>
+        <p>12 months</p>
+        
+        <h4>Benefits</h4>
+        <ul>
+            <li>Gain knowledge about the Indian tax system.</li>
+            <li>Become a self-practitioner or consultant with tax planning expertise.</li>
+            <li>Improved job opportunities and career growth.</li>
+            <li>Practical focus on current trends and challenges.</li>
+            <li>Hands-on training in tax compliance software.</li>
+            <li>Developing and improving accounting processes.</li>
+            <li>Group discussions on practical queries and case studies.</li>
+        </ul>
+        
+        <h4>Employment Opportunities</h4>
+        <ul>
+            <li>Accountant</li>
+            <li>Tax Consultant (Income Tax, GST, PF)</li>
+            <li>Auditing Clerk</li>
+            <li>Budget Analyst</li>
+            <li>Corporate Analyst</li>
+            <li>Business Analyst</li>
+            <li>Equity Research Analyst</li>
+            <li>Tax Manager</li>
+            <li>Book-keeping Staff</li>
+            <li>Banking Correspondent</li>
+            <li>Micro Finance Specialist</li>
+            <li>Mutual Fund Agent</li>
+            <li>Trainer</li>
+        </ul>
+        
+        <h4>Course Outline</h4>
+        <h5>Semester I</h5>
+        <ul>
+            <li>Business Computer Application and Business Communication</li>
+            <li>Business Accounting</li>
+            <li>Tally Prime</li>
+            <li>Relationship Banking</li>
+            <li>Micro-Finance Executive</li>
+            <li>Project</li>
+        </ul>
+        
+        <h5>Semester II</h5>
+        <ul>
+            <li>Tally Prime Professional</li>
+            <li>Taxation (Income Tax, Goods and Services Tax, Provident Fund, TDS & TCS) with E-filling</li>
+            <li>Advanced Business Accounting, Auditing and MCA</li>
+            <li>Mutual Fund Agents</li>
+            <li>Project</li>
+        </ul>
+        
+    </div>
+    
+    <!-- Images Section -->
+    <div class="images">
+        <img src="slider1.jpg" alt="Automobile Engineering Image 1">
+        <img src="slider2.jpg" alt="Automobile Engineering Image 2">
+    </div>
+  
+</main>
+   <!-- Enrollment Form Section -->
+   <div class="form-section">
+    <div class="form-message">
+        <p>Please provide your information below for any inquiries. We will get back to you as soon as possible.</p>
+      </div>
+  <form id="contactForm"> 
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+
+      <label for="number">Mobile Number:</label>
+      <input type="Number" id="number" name="number" placeholder="Enter your Mobile Number">
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
+  
+      <button type="submit">Submit</button>
+    </form>
+
+  </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 George Telegraph Training Institute. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for Image Slider
+        document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 0;
+    showSlides(); // Initialize slider
+});
+   // Initialize the first slide
+   showSlide(currentSlide);
+   function toggleDarkMode() {
+        const body = document.body;
+        const header = document.querySelector('.header');
+        const navbar = document.querySelector('.navbar');
+
+        // Toggle dark-mode class on body, header, and navbar
+        body.classList.toggle('dark-mode');
+        header.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode');
+
+        // Save the user's preference to localStorage
+        const isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+
+    // Check for saved user preference on page load
+    window.onload = function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.header').classList.add('dark-mode');
+            document.querySelector('.navbar').classList.add('dark-mode');
+        }
+    }
+
+    </script>
+</body>
+
+</html>
