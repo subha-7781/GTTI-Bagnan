@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTTI BAGNAN</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        /* Header Styling */
+        .header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-align: left;
+            border-bottom: 2px solid #333;
+        }
+
+        .header.dark-mode {
+            background-color: #333;
+            border-bottom: 2px solid #ffdf28;
+        }
+
+
+        .header img {
+            height: 100px;
+            width: 150px;
+        }
+        
+        /* header navbar styling*/
+        .header .nav-items {
+            display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    transition: transform 0.5s ease;
+        }
+        .header .nav-items .dropdown-content {
+            display: block; /* Keep display block for visibility */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #21ffd3d0;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(-10px);  /* Slight upward position */
+    transition: opacity 0.3s ease, transform 0.3s ease;  /* Smooth animation */
+    pointer-events: none; /* Prevent clicking when hidden */
+    transition-delay: 0.1s; /* Adds a slight delay */
+}
+
+
+        .header .nav-items a {
+            color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+            
+        }
+
+        .header.dark-mode .nav-items a {
+            color: #ffffff;
+        }
+        .header .nav-items a:hover{
+            color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+        }
+        .header.dark-mode .nav-items a:hover{
+            color:#ffee00;
+           
+        }
+
+        /* Dropdown Menu Styling */
+        .header .nav-items .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+    
+
+        .header.dark-mode .dropdown-content {
+            background-color: #363636;
+        }
+
+       /* Add hover effect on dropdown links */
+.header .nav-items .dropdown-content a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: #21ffd3d0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+        .header.dark-mode .dropdown-content a {
+    color: #ffffff;
+    background-color: #363636;
+}
+
+
+.header .nav-items .dropdown-content a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    
+   
+}
+
+        .header.dark-mode .dropdown-content a:hover {
+            background-color: #444444;
+            color: #ffee00; /* Bright color contrast in dark mode */
+}
+
+       
+.header .nav-items .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    animation: bounceIn 0.5s ease; /* New animation */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .header .nav-items {
+        display: none;
+    }
+
+    .header.active .nav-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+
+      /*header nav bar end*/
+
+      
+  /* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 15px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #000000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar.dark-mode {
+    background-color: #333;
+    border-bottom: 2px solid #ffdf28;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row; /* Ensure horizontal alignment */
+    gap: 15px; /* Adjust gap for spacing */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: #000000;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #3011f6;
+    background-color: transparent;
+    border-radius: 2px;
+    transform: scale(1.1);
+    opacity: 1;
+   
+}
+
+.navbar.dark-mode ul li a {
+    color: #e0e0e0;
+}
+
+.navbar.dark-mode ul li a:hover {
+    color: #ffee00; /* Bright hover effect in dark mode */
+    background-color: transparent;
+}
+
+/* Navbar Dropdown Menu Styling */
+.navbar ul li .dropdown {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
+    position: absolute;
+    top: 100%; /* Dropdown below parent */
+    left: 0;
+    background-color: #21ffd3d0;
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-10px); /* Off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    pointer-events: none; /* Prevent clicks */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.navbar.dark-mode .dropdown {
+    background-color: #363636;/* Darker background for dark mode */
+}
+
+.navbar ul li:hover .dropdown {
+    visibility: visible; /* Show dropdown on hover */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Reset position */
+    pointer-events: auto; /* Enable interaction */
+    animation: bounceIn 0.5s ease; /* Add bounce animation */
+}
+
+.navbar ul li .dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: #000000;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar.dark-mode .dropdown a {
+    color: #e0e0e0; /* Light text in dark mode */
+}
+
+.navbar ul li .dropdown a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hover effect */
+    color: #3011f6;
+    background-color: transparent;
+}
+
+.navbar.dark-mode .dropdown a:hover {
+    background-color: #444444;
+            color: #ffee00; /* Bright color contrast in dark mode */
+}
+
+/* Bounce animation for dropdown */
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        width: 100%; /* Full-width items on mobile */
+    }
+
+    .navbar ul li a {
+        text-align: center; /* Center text */
+        padding: 15px;
+    }
+
+    .navbar ul li .dropdown {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none; /* Reset position */
+        box-shadow: none; /* Simplify for mobile */
+        width: 100%; /* Full-width on mobile */
+    }
+}
+
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            bottom: 20px;
+            left: 0;
+        }
+
+        .message {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            display: inline-block;
+        }
+
+        /* Slider Controls */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            user-select: none;
+            transition: 0.6s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        /* Course container with horizontal scroll and navigation */
+/* Courses Section with Horizontal Slider */
+.courses {
+    padding: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.course-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.course-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: calc(100% - 100px); /* Adjust width for buttons */
+}
+
+.course-card {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    flex: none;
+    scroll-snap-align: start;
+}
+
+.course-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.course-card:hover .course-overlay {
+    opacity: 1;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+.course-card {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    flex: none;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease; /* Add transition for smooth zoom effect */
+}
+
+.course-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.course-card:hover .course-overlay {
+    opacity: 1;
+}
+
+.course-card:hover {
+    transform: scale(1.1); /* Zoom in effect */
+}
+
+
+        /* NSDC Section */
+        .nsdc-section {
+            padding: 40px;
+            background-color: #ffc251;
+        }
+
+        .nsdc-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .nsdc-images {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nsdc-images img {
+            width: 200px;
+            height: auto;
+        }
+
+        .nsdc-message {
+            flex: 2;
+            font-size: 1.2rem;
+            color: #070707;
+            margin-left: 20px;
+        }
+
+        /* Recruiting Partners Section */
+        .partners {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .partners-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .partners-logos img {
+            width: 60px;
+            height: 70px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 7px;
+            right: 5px;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 2px;
+            z-index: 100;
+        }
+
+        .dark-mode-toggle img {
+            width: 50px;
+            height: 60px;
+        }
+         /* Popup Box Styling */
+         #popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 20px; /* Position the popup just below the top */
+            left: 50%;
+            transform: translateX(-50%); /* Center the popup horizontally */
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            background-color: rgb(118, 104, 104); /* Transparent background */
+            border: 2px solid transparent; /* Start with a transparent border */
+            z-index: 1000;
+            text-align: center;
+            width: 70%;
+            max-width: 400px;
+            animation: bounce 0.6s ease forwards, neon-border 3s infinite; /* Bounce and neon border animations */
+        }
+
+        /* Close button for the popup */
+        #close-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #FFD700;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #close-btn:hover {
+            background-color: #FFA500; /* Darker gold on hover */
+        }
+
+        /* Learn More button */
+        #learn-more-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #learn-more-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        /* Hidden Learn More Information */
+        #learn-more-info {
+            display: none;
+            margin-top: 15px;
+            background-color: #747474;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        /* Bounce animation */
+        @keyframes bounce {
+            0% {
+                transform: translateY(-100px) translateX(-50%); /* Start off-screen */
+            }
+            50% {
+                transform: translateY(20px) translateX(-50%); /* Move down a little */
+            }
+            100% {
+                transform: translateY(0) translateX(-50%); /* Final resting position */
+            }
+        }
+
+        /* Neon Border Animation */
+        @keyframes neon-border {
+            0% {
+                border-color: #FF0000; /* Red */
+            }
+            25% {
+                border-color: #00FF00; /* Green */
+            }
+            50% {
+                border-color: #0000FF; /* Blue */
+            }
+            75% {
+                border-color: #FFFF00; /* Yellow */
+            }
+            100% {
+                border-color: #FF1493; /* Pink */
+            }
+        }
+
+        /* Media query for small devices */
+        @media (max-width: 600px) {
+            #popup {
+                width: 90%; /* Makes the popup take up 90% of the screen width */
+                padding: 15px;
+                font-size: 16px; /* Reduce font size on smaller screens */
+            }
+
+            #learn-more-btn, #close-btn {
+                width: 100%; /* Buttons take up full width on smaller devices */
+            }
+
+            #learn-more-info {
+                font-size: 14px; /* Smaller text for Learn More info on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+       
+        <img src="6714975.png" alt="Toggle Dark Mode">
+      
+        
+    </button>
+   <!-- Header Section -->
+<header class="header">
+   <center><p class="headtext"><h3> THE GEORGE TELEGRAPH TRAINING INSTITUTE BAGNAN</h3></p></center>
+    <img src="george-telegraph-logo.png" alt="Logo" class="logo">
+  
+    <div class="nav-items">
+      
+        <div class="dropdown">
+            <a href="">About</a>
+            <div class="dropdown-content">
+                <a href="team.html">Team</a>
+                <a href="history.html">History</a>
+                <a href="events.html">Events</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="">Contact</a>
+            <div class="dropdown-content">
+                <a href="Adress.html">Contact Details</a>
+                <a href="Adress.html">Address</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="others.html">Others</a>
+          
+        </div>
+    </div>
+   
+</header>
+
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Courses</a>
+                <ul class="dropdown">
+                    <li><a href="param.html">Paramedical Department</a></li>
+                    <li><a href="csoftware.html">Computer Software</a></li>
+                    <li><a href="chard.html">Comuter Hardware</a></li>
+                    <li><a href="mobile.html">Moblie Repairing</a></li>
+                    <li><a href="acf.html">AC & Fridge Repairing</a></li>
+                    <li><a href="talk.html">Communication</a></li>
+                    <li><a href="tally.html">Account & Finance</a></li>
+                    <li><a href="electric.html">Electronics</a></li>
+                    <li><a href="atm.html">Automobile Department</a></li>
+                </ul>
+            </li>
+            <li><a href="">Addmission</a>
+                <ul class="dropdown">
+                    <li><a href="rules.html">Rules & regulation</a></li>
+                    <li><a href="elig.html">Eligebility</a></li>
+                </ul>
+            </li>
+            <li><a href="placements.html">Placements</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('slider1.jpg');">
+                <div class="hero-content">
+                    <div class="message">Welcome to George Telegraph Training Institute!</div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('slider2.jpg');">
+                <div class="hero-content">
+                    <div class="message">Empowering Students for a Brighter Future</div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('slider3.jpg');">
+                <div class="hero-content">
+                    <div class="message">Join Us Today!</div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('slider4.jpg');">
+                <div class="hero-content">
+                    <div class="message">Explore Our Courses</div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('slider5.jpg');">
+                <div class="hero-content">
+                    <div class="message">Achieve Your Goals</div>
+                </div>
+            </div>
+        </div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </section>
+
+    <!-- Course Section -->
+<!-- Courses Section with Horizontal Slider -->
+<section class="courses" id="courses">
+    <h2>Our Courses</h2>
+    <div class="course-slider-container">
+        <button class="slider-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="course-slider">
+            <div class="course-card" id="course1">
+                <a href="param.html">
+                    <img src="slider1.jpg" alt="Course 1">
+                    <div class="course-overlay">
+                        <p>Paramedical Department.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="csoftware.html">
+                    <img src="slider2.jpg" alt="Course 2">
+                    <div class="course-overlay">
+                        <p>Computer Software.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="chard.html">
+                    <img src="slider2.jpg" alt="Course 3">
+                    <div class="course-overlay">
+                        <p>Comuter Hardware.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="mobile.html">
+                    <img src="slider2.jpg" alt="Course 4">
+                    <div class="course-overlay">
+                        <p>Moblie Repairing.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="#course5">
+                    <img src="slider2.jpg" alt="Course 2">
+                    <div class="course-overlay">
+                        <p>AC & Fridge Repairing.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="talk.html">
+                    <img src="slider2.jpg" alt="Course 2">
+                    <div class="course-overlay">
+                        <p>Communication.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="tally.html">
+                    <img src="slider2.jpg" alt="Course 3">
+                    <div class="course-overlay">
+                        <p>Account & Finance.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="atm.html">
+                    <img src="slider2.jpg" alt="Course ">
+                    <div class="course-overlay">
+                        <p>Automobile Department.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="course-card" id="course2">
+                <a href="electric.html.html">
+                    <img src="slider2.jpg" alt="Course ">
+                    <div class="course-overlay">
+                        <p>Electronics.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Add more course cards similarly -->
+        </div>
+        <button class="slider-nav next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</section>
+
+
+
+
+    <!-- NSDC Section -->
+    <section class="nsdc-section">
+        <h2> Our NSDC Connection</h2>
+        <div class="nsdc-content">
+            <div class="nsdc-images">
+                <img src="skill-india-logo.jpg" alt="NSDC 1">
+                <img src="nsdc-certificate.jpg" alt="NSDC 2">
+            </div>
+            <div class="nsdc-message">
+                We are proud to be a partner with NSDC in delivering quality education.
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruiting Partners Section -->
+    <section class="partners">
+        <h2>Our Recruiting Partners</h2>
+        <div class="partners-logos">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <img src="honda.png" alt="Partner 1">
+            <img src="airtel_logo.png" alt="Partner 2">
+            <img src="cisco.png" alt="Partner 3">
+            <!-- Add more partner images here -->
+        </div>
+    </section>
+    <div id="popup">
+        <p>Welcome! For the best experience, please switch to desktop mode if you're using a mobile device.</p>
+        <button id="close-btn" onclick="closePopup()">Close</button>
+        <button id="learn-more-btn" onclick="toggleLearnMore()">Learn More</button>
+
+        <!-- Hidden Learn More Information -->
+        <div id="learn-more-info">
+            <p>To switch to desktop mode on your mobile device:</p>
+            <ul>
+                <li>For iPhone/iPad: Tap the "Share" button, then tap "Request Desktop Site".</li>
+                <li>For Android: Tap the three dots in the top-right corner, then check the "Desktop Site" box.</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 George Telegraph Training Institute. All rights reserved.</p>
+    </footer>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    // --- Hero Image Slider ---
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("hero-slide");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; // Hide all slides
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1; // Loop back to the first slide
+        slides[slideIndex - 1].style.display = "block"; // Show the current slide
+        setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+
+    // Manual slide navigation
+    window.changeSlide = function (n) {
+        const slides = document.getElementsByClassName("hero-slide");
+        slideIndex += n;
+        if (slideIndex > slides.length) slideIndex = 1;
+        if (slideIndex < 1) slideIndex = slides.length;
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; // Hide all slides
+        }
+        slides[slideIndex - 1].style.display = "block"; // Show the current slide
+    };
+
+    // --- Course Slider ---
+    window.moveSlide = function (i) {
+        const slides = document.querySelector('.course-slider');
+        const totalSlides = slides.children.length;
+        slideIndex = (slideIndex + i + totalSlides) % totalSlides; // Ensure index is within bounds
+        slides.scrollTo({
+            left: slides.children[slideIndex].offsetLeft,
+            behavior: 'smooth'
+        });
+    };
+
+    // --- Dark Mode Toggle ---
+    function toggleDarkMode() {
+        const body = document.body;
+        const header = document.querySelector('.header');
+        const navbar = document.querySelector('.navbar');
+
+        // Toggle dark-mode class on body, header, and navbar
+        body.classList.toggle('dark-mode');
+        header.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode');
+
+        // Save the user's preference to localStorage
+        const isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+    window.toggleDarkMode = toggleDarkMode; // Expose function globally
+
+    // Apply saved theme preference on page load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.header').classList.add('dark-mode');
+        document.querySelector('.navbar').classList.add('dark-mode');
+    }
+
+    // --- Popup ---
+    function showPopup() {
+        setTimeout(function () {
+            const popup = document.getElementById('popup');
+            if (popup) popup.style.display = 'block'; // Show popup after 1 second
+        }, 1000); // 1000 milliseconds = 1 second
+    }
+    window.showPopup = showPopup; // Expose function globally
+
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        if (popup) popup.style.display = 'none';
+    }
+    window.closePopup = closePopup; // Expose function globally
+
+    // --- Learn More ---
+    function toggleLearnMore() {
+        const info = document.getElementById('learn-more-info');
+        if (info) {
+            if (info.style.display === 'none' || info.style.display === '') {
+                info.style.display = 'block'; // Show the learn more info
+            } else {
+                info.style.display = 'none'; // Hide the learn more info
+            }
+        }
+    }
+    window.toggleLearnMore = toggleLearnMore; // Expose function globally
+
+    // Initialize popup on page load
+    showPopup();
+});
+    </script>
+</body>
+
+</html>
